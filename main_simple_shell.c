@@ -1,4 +1,4 @@
-#include "simple_shell.h"
+#include "header.h"
 
 /**
  * main - principal script for simple shell
@@ -12,7 +12,7 @@ int main(void)
 	pid_t child_pid;
 	int i = 0, status;
 
-	while (i == 0)
+	while (1)
 	{
 		write(1, "$ ", 2);
 		getline(&buffer, &buffer_size, stdin);
@@ -34,7 +34,10 @@ int main(void)
 			exit(1);
 		}
 		if (child_pid == 0)
+		{
 			_execve(arr_token[0], arr_token, NULL);
+			return (0);
+		}
 		else
 			wait(&status);
 		i = 0;

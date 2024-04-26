@@ -1,4 +1,4 @@
-#include "simple_shell.h"
+#include "header.h"
 
 /**
  * _execve - function that execute the comands
