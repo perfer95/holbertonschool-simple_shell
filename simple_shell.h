@@ -10,6 +10,12 @@
 
 
 /*Prototypes*/
+void _execve(char *path, char **argv, char **envp);
+
+
+/*Auxiliar Prototypes*/
+int _strcmp(char *s1, char *s2);
+char *_strcpy(char *dest, char *src);
 
 
 #endif

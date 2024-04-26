@@ -25,6 +25,8 @@ int main(void)
 			i++;
 		}
 		arr_token[i] = NULL;
+		if (_strcmp(arr_token[0], "^D") == 0)
+			return (0);
 		child_pid = fork(); /*Print error -1*/
 		if (child_pid == -1)
 		{
@@ -32,16 +34,10 @@ int main(void)
 			exit(1);
 		}
 		if (child_pid == 0)
-		{
-			if (child_pid == 0)
-			{
-				perror("Error with execve");
-				exit(1);
-			}
-		}
+			_execve(arr_token[0], arr_token, NULL);
 		else
 			wait(&status);
-		//i = 0;
+		i = 0;
 		free(arr_token);
 	}
 	return (0);
