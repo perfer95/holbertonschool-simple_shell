@@ -12,7 +12,7 @@ int main(void)
 	pid_t child_pid;
 	int i = 0, status;
 
-	while (1)
+	while (i == 0)
 	{
 		write(1, "$ ", 2);
 		getline(&buffer, &buffer_size, stdin);
@@ -41,7 +41,7 @@ int main(void)
 		}
 		else
 			wait(&status);
-		i = 0;
+		//i = 0;
 		free(arr_token);
 	}
 	return (0);
