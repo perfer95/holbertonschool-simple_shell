@@ -14,7 +14,7 @@ int main(void)
 
 	while (1)
 	{
-		write(1, "$ ", 2);
+		write(1, " ", 2);
 		getline(&buffer, &buffer_size, stdin);
 		token = strtok(buffer, " \t\n");
 		arr_token = malloc(sizeof(char *) * 1024);
