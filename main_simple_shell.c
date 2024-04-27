@@ -25,7 +25,7 @@ int main(void)
 			i++;
 		}
 		arr_token[i] = NULL;
-		if (_strcmp(arr_token[0], "^D") == 0)
+		if (_strcmp(arr_token[0], "exit") == 0)
 			return (0);
 		child_pid = fork(); /*Print error -1*/
 		if (child_pid == -1)
