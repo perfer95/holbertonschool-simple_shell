@@ -11,22 +11,22 @@ int main(void)
 	char **arr_token;
 	pid_t child_pid;
 	int i = 0, status;
+	ssize_t checker_EOF;
 
 	while (1)
 	{
-		write(1, " ", 2);
-		getline(&buffer, &buffer_size, stdin);
+		write(1, "($)", 2);
+		checker_EOF = getline(&buffer, &buffer_size, stdin);
+		if (checker_EOF == -1)
+			break;
 		token = strtok(buffer, " \t\n");
 		arr_token = malloc(sizeof(char *) * 1024);
 		while (token != NULL)
 		{
-			arr_token[i] = token;
+			arr_token[i++] = token;
 			token = strtok(NULL, " \t\n");
-			i++;
 		}
 		arr_token[i] = NULL;
-		if (_strcmp(arr_token[0], "exit") == 0)
-			return (0);
 		child_pid = fork(); /*Print error -1*/
 		if (child_pid == -1)
 		{
