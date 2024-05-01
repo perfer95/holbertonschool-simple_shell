@@ -35,7 +35,6 @@ int main(void)
 		child_pid = fork(); /*Print error -1*/
 		if (child_pid == -1)
 		{
-                        free(arr_token);
 			perror("Error in FORK");
 			exit(1);
 		}
