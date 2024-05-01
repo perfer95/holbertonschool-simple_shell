@@ -11,7 +11,7 @@ int main(void)
 	char **arr_token;
 	pid_t child_pid;
 	int i = 0, status;
-	ssize_t checker_EOF;
+	/*ssize_t checker_EOF;*/
 
 	while (1)
 	{
