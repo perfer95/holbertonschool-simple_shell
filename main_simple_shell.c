@@ -15,10 +15,13 @@ int main(void)
 
 	while (1)
 	{
-		write(1, "($)", 2);
+		write(1, "($) ", 4);
 		checker_EOF = getline(&buffer, &buffer_size, stdin);
-		if (checker_EOF == -1)
+		if (feof(stdin))
+		{
+			write(1, "\n", 1);
 			break;
+		}
 		token = strtok(buffer, " \t\n");
 		arr_token = malloc(sizeof(char *) * 1024);
 		while (token != NULL)
