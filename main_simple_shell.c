@@ -15,11 +15,13 @@ int main(void)
 
 	while (1)
 	{
-		write(1, "($) ", 4);
+		if (isatty(STDIN_FILENO))
+			write(1, "($) ", 4);
 		getline(&buffer, &buffer_size, stdin);/*checker_EOF*/
 		if (feof(stdin))
 		{
-			write(1, "\n", 1);
+			if (isatty(STDIN_FILENO))
+				write(1, "\n", 1);
 			break;
 		}
 		token = strtok(buffer, " \t\n");
