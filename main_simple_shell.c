@@ -10,15 +10,14 @@ int main(void)
 	size_t buffer_size = 0;
 	char **arr_token;
 	pid_t child_pid;
-	int i = 0, status;
-	/*ssize_t checker_EOF;*/
+	int i = 0, status, checker_EOF;
 
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
 			write(1, "($) ", 4);
-		getline(&buffer, &buffer_size, stdin);/*checker_EOF*/
-		if (feof(stdin))
+		checker_EOF = getline(&buffer, &buffer_size, stdin);/*checker_EOF*/
+		if (checker_EOF == -1 && buffer != NULL)
 		{
 			if (isatty(STDIN_FILENO))
 				write(1, "\n", 1);
@@ -41,15 +40,15 @@ int main(void)
 		if (child_pid == 0)
 		{
 			_execve(arr_token[0], arr_token, NULL);
-			free(arr_token);
-			free(buffer);
+			/*free(arr_token);
+			free(buffer);*/
 			return (0);
 		}
 		else
 			wait(&status);
 		i = 0;
 		free(arr_token);
-		free(buffer);
+		/*free(buffer);*/
 	}
 	return (0);
 }
