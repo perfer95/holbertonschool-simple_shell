@@ -35,12 +35,14 @@ int main(void)
 		child_pid = fork(); /*Print error -1*/
 		if (child_pid == -1)
 		{
+                        free(arr_token);
 			perror("Error in FORK");
 			exit(1);
 		}
 		if (child_pid == 0)
 		{
 			_execve(arr_token[0], arr_token, NULL);
+			free(arr_token);
 			return (0);
 		}
 		else
