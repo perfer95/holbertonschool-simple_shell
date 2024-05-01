@@ -16,7 +16,7 @@ int main(void)
 	while (1)
 	{
 		write(1, "($) ", 4);
-		checker_EOF = getline(&buffer, &buffer_size, stdin);
+		getline(&buffer, &buffer_size, stdin);/*checker_EOF*/
 		if (feof(stdin))
 		{
 			write(1, "\n", 1);
