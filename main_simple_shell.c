@@ -41,15 +41,15 @@ int main(void)
 		if (child_pid == 0)
 		{
 			_execve(arr_token[0], arr_token, NULL);
-			/*free(arr_token);*/
+			free(arr_token);
 			free(buffer);
 			return (0);
 		}
 		else
 			wait(&status);
 		i = 0;
+		free(arr_token);
 		free(buffer);
-		/*free(arr_token);*/
 	}
 	return (0);
 }
