@@ -40,7 +40,6 @@ int main(void)
 		}
 		else
 			wait(&status);
-		i = 0;
 		free(arr_token);
 	}
 	free(buffer);
