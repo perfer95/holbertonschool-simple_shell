@@ -21,7 +21,6 @@ int main(void)
 		{
 			if (isatty(STDIN_FILENO))
 				write(1, "\n", 1);
-			free(buffer);
 			break;
 		}
 		token = strtok(buffer, " \t\n");
