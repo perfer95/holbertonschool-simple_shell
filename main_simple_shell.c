@@ -6,11 +6,11 @@
  */
 int main(void)
 {
-	char *buffer = NULL, *token;
+	char *buffer = NULL;
 	size_t buffer_size = 0;
 	char **arr_token;
 	pid_t child_pid;
-	int i = 0, status, checker_EOF;
+	int status, checker_EOF;
 
 	while (1)
 	{
