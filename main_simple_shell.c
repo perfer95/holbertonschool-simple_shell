@@ -49,7 +49,6 @@ int main(void)
 		i = 0;
 		free(arr_token);
 		free(buffer);
-		buffer = NULL;
 	}
 	return (0);
 }
