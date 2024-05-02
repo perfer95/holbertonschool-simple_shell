@@ -21,11 +21,15 @@ int main(void)
 		{
 			if (isatty(STDIN_FILENO))
 				write(1, "\n", 1);
-			free(buffer);
 			break;
 		}
 		token = strtok(buffer, " \t\n");
 		arr_token = malloc(sizeof(char *) * 1024);
+		if (arr_token == NULL)
+		{
+			perror("Malloc fail");
+			exit(1);
+		}
 		while (token != NULL)
 		{
 			arr_token[i++] = token;
@@ -49,10 +53,7 @@ int main(void)
 			wait(&status);
 		i = 0;
 		free(arr_token);
-		if (buffer != NULL)
-		{
-			free(buffer);
-		}
 	}
+	free(buffer);
 	return (0);
 }
