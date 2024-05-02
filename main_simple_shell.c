@@ -41,14 +41,14 @@ int main(void)
 		{
 			_execve(arr_token[0], arr_token, NULL);
 			/*free(arr_token);
-			free(buffer);*/
-			return (0);
+			free(buffer);
+			return (0);*/
 		}
 		else
 			wait(&status);
 		i = 0;
 		free(arr_token);
-		free(buffer);
+		/*free(buffer);*/
 	}
 	return (0);
 }
