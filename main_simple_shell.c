@@ -24,22 +24,10 @@ int main(void)
 			break;
 		}
 		if (checker_spaces(buffer) == 1)
-		{
 			continue;
-		}
-		token = strtok(buffer, " \t\n");
-		arr_token = malloc(sizeof(char *) * 1024);
-		if (arr_token == NULL)
-		{
-			perror("Malloc fail");
-			exit(1);
-		}
-		while (token != NULL)
-		{
-			arr_token[i++] = token;
-			token = strtok(NULL, " \t\n");
-		}
-		arr_token[i] = NULL;
+
+		arr_token = tokenize(buffer);
+
 		child_pid = fork(); /*Print error -1*/
 		if (child_pid == -1)
 		{

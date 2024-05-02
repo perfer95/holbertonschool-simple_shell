@@ -18,6 +18,7 @@ void _execve(char *path, char **argv, char **envp);
 int _strcmp(char *s1, char *s2);
 char *_strcpy(char *dest, char *src);
 int checker_spaces(char *buffer);
+char **tokenize(char *buffer);
 
 
 #endif
