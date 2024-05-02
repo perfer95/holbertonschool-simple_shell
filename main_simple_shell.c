@@ -48,7 +48,8 @@ int main(void)
 			wait(&status);
 		i = 0;
 		free(arr_token);
-		/*free(buffer);*/
+		free(buffer);
+		buffer = NULL;
 	}
 	return (0);
 }
