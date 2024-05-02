@@ -23,6 +23,10 @@ int main(void)
 				write(1, "\n", 1);
 			break;
 		}
+		if (checker_spaces(buffer) == 1)
+		{
+			continue;
+		}
 		token = strtok(buffer, " \t\n");
 		arr_token = malloc(sizeof(char *) * 1024);
 		if (arr_token == NULL)
@@ -45,9 +49,6 @@ int main(void)
 		if (child_pid == 0)
 		{
 			_execve(arr_token[0], arr_token, NULL);
-			/*free(arr_token);
-			free(buffer);
-			return (0);*/
 		}
 		else
 			wait(&status);
