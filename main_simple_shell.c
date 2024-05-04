@@ -28,7 +28,7 @@ int main(void)
 		dir = path_check(arr_token[0]);
 		if (dir == NULL)
 		{
-			write(1, "not found\n", 10);
+			/*write(1, "not found\n", 10);*/
 			continue;
 		}
 		else
