@@ -33,14 +33,14 @@ char *_getenv(char *name)
 char **duplicate_environ()
 {
 	int env_count = 0, i;
-	char **env_ptr = environ;
+	char **env_ptr = environ, **new_environ;
 
 	while (*env_ptr != NULL)
 	{
 		env_count++;
 		env_ptr++;
 	}
-	char **new_environ = malloc((env_count + 1) * sizeof(char *));
+	new_environ = malloc((env_count + 1) * sizeof(char *));
 
 	if (new_environ == NULL)
 	{
@@ -73,7 +73,9 @@ char **duplicate_environ()
  */
 void free_environ(char **environ)
 {
-	for (int i = 0; environ[i] != NULL; i++)
+	int i;
+
+	for (i = 0; environ[i] != NULL; i++)
 	{
 		free(environ[i]);
 	}
