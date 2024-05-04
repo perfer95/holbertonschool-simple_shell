@@ -6,9 +6,8 @@
  */
 int main(void)
 {
-	char *buffer = NULL;
+	char *buffer = NULL, *dir, **arr_token;
 	size_t buffer_size = 0;
-	char **arr_token;
 	pid_t child_pid;
 	int status, checker_EOF;
 
@@ -27,20 +26,29 @@ int main(void)
 			continue;
 
 		arr_token = tokenize(buffer);
+		dir = path_check(arr_token[0]);
+		printf("dir value: %s\n", dir);
 
-		child_pid = fork(); /*Print error -1*/
-		if (child_pid == -1)
+		if (dir == NULL)
 		{
-			perror("Error in FORK");
-			exit(1);
-		}
-		if (child_pid == 0)
-		{
-			_execve(arr_token[0], arr_token, NULL);
+			write(1, "not found\n", 10);
+			continue;
 		}
 		else
-			wait(&status);
+		{
+			child_pid = fork(); /*Print error -1*/
+			if (child_pid == -1)
+			{
+				perror("Error in FORK");
+				exit(1);
+			}
+			if (child_pid == 0)
+				_execve(dir, arr_token, NULL);
+			else
+				wait(&status);
+		}
 		free(arr_token);
+		free(dir);
 	}
 	free(buffer);
 	return (0);
