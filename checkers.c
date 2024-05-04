@@ -25,16 +25,15 @@ char *path_check(char *command)
 		exit(1);
 	}
 	dir = strtok(path_cp, ":");
-	full_path = malloc(strlen(dir) + strlen(command) + 2);/*strlen*/
-
-	if (full_path == NULL)
-	{
-		perror("Malloc fail");
-		exit(1);
-	}
 
 	while (dir != NULL)
 	{
+		full_path = malloc(strlen(dir) + strlen(command) + 2);/*strlen*/
+		if (full_path == NULL)
+		{
+			perror("Malloc fail");
+			exit(1);
+		}
 		sprintf(full_path, "%s/%s", dir, command);
 
 		if (access(full_path, X_OK) == 0)
@@ -42,11 +41,10 @@ char *path_check(char *command)
 			free(path_cp); /*Don forget free full_path in main*/
 			return (full_path);
 		}
+		free(full_path);
 		dir = strtok(NULL, ":");
 	}
-
 	free(path_cp);
-	free(full_path);
 	return (NULL);
 }
 
