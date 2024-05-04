@@ -9,7 +9,9 @@ int main(void)
 	char *buffer = NULL, *dir, **arr_token, **env;
 	size_t buffer_size = 0;
 	pid_t child_pid;
-	int status, checker_EOF;
+	int status, checker_EOF, i;
+
+	env = environ;
 
 	while (1)
 	{
@@ -31,12 +33,11 @@ int main(void)
 		}
 		if (strcmp(buffer, "env\n") == 0)
 		{
-			for (env = environ; *env != NULL; env++)
+			for (i = 0; env[i] != NULL; i++)
 			{
-				write(STDOUT_FILENO, *env, strlen(*env));
+				write(STDOUT_FILENO, *env, strlen(env[i]));
 				write(STDOUT_FILENO, "\n", 1);
 			}
-			free(buffer);
 			continue;
 		}
 		arr_token = tokenize(buffer);
