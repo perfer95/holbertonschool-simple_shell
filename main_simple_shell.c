@@ -24,6 +24,8 @@ int main(void)
 		}
 		if (checker_spaces(buffer) == 1)
 			continue;
+		if (strcmp(arr_token[0], "exit") == 0)
+			exit(0);
 		arr_token = tokenize(buffer);
 		dir = path_check(arr_token[0]);
 		if (dir == NULL)
