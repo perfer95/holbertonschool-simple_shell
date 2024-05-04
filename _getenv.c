@@ -32,7 +32,7 @@ char *_getenv(char *name)
  */
 char **duplicate_environ()
 {
-	int env_count = 0;
+	int env_count = 0, i;
 	char **env_ptr = environ;
 
 	while (*env_ptr != NULL)
@@ -40,7 +40,7 @@ char **duplicate_environ()
 		env_count++;
 		env_ptr++;
 	}
-	char **new_environ = (char **)malloc((env_count + 1) * sizeof(char *));
+	char **new_environ = malloc((env_count + 1) * sizeof(char *));
 
 	if (new_environ == NULL)
 	{
@@ -49,7 +49,7 @@ char **duplicate_environ()
 	}
 
 	/*Copy each element*/
-	for (int i = 0; i < env_count; i++)
+	for (i = 0; i < env_count; i++)
 	{
 		new_environ[i] = strdup(environ[i]);
 		if (new_environ[i] == NULL)
