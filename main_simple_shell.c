@@ -6,7 +6,7 @@
  */
 int main(void)
 {
-	char *buffer = NULL, *dir, **arr_token;
+	char *buffer = NULL, *dir, **arr_token, **env;
 	size_t buffer_size = 0;
 	pid_t child_pid;
 	int status, checker_EOF;
@@ -28,6 +28,16 @@ int main(void)
 		{
 			free(buffer);
 			exit(0);
+		}
+		if (strcmp(buffer, "env\n") == 0)
+		{
+			for (env = environ; *env != NULL; env++)
+			{
+				write(STDOUT_FILENO, *env, strlen(*env));
+				write(STDOUT_FILENO, "\n", 1);
+			}
+			free(buffer);
+			continue;
 		}
 		arr_token = tokenize(buffer);
 		dir = path_check(arr_token[0]);
