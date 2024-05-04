@@ -8,6 +8,7 @@
 #include <sys/wait.h>
 #include <string.h> /*<strtok>*/
 #include <ctype.h>
+#include <fcntl.h>
 
 extern char **environ;
 /*Prototypes*/
