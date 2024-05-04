@@ -8,14 +8,14 @@
  */
 char *path_check(char *command)
 {
+	char *path, path_cp, dir, full_path;
+
 	if (access(command, F_OK) == 0)
 		return (strdup(command));
-	char *path = _getenv("PATH");
-	/*printf("path: %s\n", path);*/
+	path = _getenv("PATH");
 	if (path == NULL)
 		return (NULL);
-
-	char *path_cp = strdup(path); /*duplicate*/
+	path_cp = strdup(path); /*duplicate*/
 
 	free(path);
 
@@ -24,8 +24,8 @@ char *path_check(char *command)
 		perror("strdup");
 		exit(1);
 	}
-	char *dir = strtok(path_cp, ":");
-	char *full_path = malloc(strlen(dir) + strlen(command) + 2);/*strlen*/
+	dir = strtok(path_cp, ":");
+	full_path = malloc(strlen(dir) + strlen(command) + 2);/*strlen*/
 
 	if (full_path == NULL)
 	{
