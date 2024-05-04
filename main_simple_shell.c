@@ -24,11 +24,8 @@ int main(void)
 		}
 		if (checker_spaces(buffer) == 1)
 			continue;
-
 		arr_token = tokenize(buffer);
 		dir = path_check(arr_token[0]);
-		printf("dir value: %s\n", dir);
-
 		if (dir == NULL)
 		{
 			write(1, "not found\n", 10);

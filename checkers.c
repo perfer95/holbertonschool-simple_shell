@@ -8,7 +8,7 @@
  */
 char *path_check(char *command)
 {
-	char *path, path_cp, dir, full_path;
+	char *path, *path_cp, *dir, *full_path;
 
 	if (access(command, F_OK) == 0)
 		return (strdup(command));
