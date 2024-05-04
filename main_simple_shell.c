@@ -24,7 +24,7 @@ int main(void)
 		}
 		if (checker_spaces(buffer) == 1)
 			continue;
-		if (strcmp(buffer, "exit") == 0)
+		if (strcmp(buffer, "exit\n") == 0)
 		{
 			free(buffer);
 			exit(0);
@@ -34,6 +34,8 @@ int main(void)
 		if (dir == NULL)
 		{
 			/*write(1, "not found\n", 10);*/
+			free(arr_token);
+			free(dir);
 			continue;
 		}
 		else
@@ -41,6 +43,8 @@ int main(void)
 			child_pid = fork(); /*Print error -1*/
 			if (child_pid == -1)
 			{
+				free(arr_token);
+				free(dir);
 				perror("Error in FORK");
 				exit(1);
 			}
