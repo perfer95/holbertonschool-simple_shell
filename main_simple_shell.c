@@ -24,7 +24,7 @@ int main(void)
 		}
 		if (checker_spaces(buffer) == 1)
 			continue;
-		if (strcmp(arr_token[0], "exit") == 0)
+		if (strcmp(buffer, "exit") == 0)
 		{
 			free(buffer);
 			exit(0);
