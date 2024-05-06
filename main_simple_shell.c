@@ -33,12 +33,7 @@ int main(void)
 		}
 		if (strcmp(buffer, "env\n") == 0)
 		{
-			for (i = 0; env[i] != NULL; i++)
-			{
-				write(STDOUT_FILENO, *env, strlen(env[i]));
-				write(STDOUT_FILENO, "\n", 1);
-			}
-			continue;
+			print_env();
 		}
 		arr_token = tokenize(buffer);
 		dir = path_check(arr_token[0]);

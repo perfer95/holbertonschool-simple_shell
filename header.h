@@ -18,6 +18,7 @@ char **tokenize(char *buffer);
 char *path_check(char *command);
 char **duplicate_environ();
 void free_environ(char **environ);
+void print_env(void);
 
 
 /*Auxiliar Prototypes*/
