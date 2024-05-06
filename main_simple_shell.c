@@ -6,12 +6,11 @@
  */
 int main(void)
 {
-	char *buffer = NULL, *dir, **arr_token, **env;
+	char *buffer = NULL, *dir, **arr_token;
 	size_t buffer_size = 0;
 	pid_t child_pid;
-	int status, checker_EOF, i;
+	int status, checker_EOF;
 
-	env = environ;
 
 	while (1)
 	{
