@@ -33,6 +33,7 @@ int main(void)
 		if (strcmp(buffer, "env\n") == 0)
 		{
 			print_env();
+			continue;
 		}
 		arr_token = tokenize(buffer);
 		dir = path_check(arr_token[0]);
